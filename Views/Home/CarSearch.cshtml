@@ -1,0 +1,84 @@
+﻿@model IEnumerable<CarSale.Models.Car>
+
+@{
+    ViewBag.Title = "CarSearch";
+}
+
+<h2>Car Search</h2>
+
+@if (ViewBag.msg != null)
+{
+    <div class="alert alert-danger">@ViewBag.msg</div>
+}
+
+@using (Html.BeginForm("CarSearch", "Home", FormMethod.Get))
+{
+    <style>
+        .search-textbox {
+            margin-right: 10px; /* Adjust the margin value as per your needs */
+        }
+
+        .search-button {
+            /* Add any additional styles for the search button */
+        }
+    </style>
+
+    @Html.TextBox("searching", null, new { @class = "search-textbox" })
+    <input type="submit" value="Search" class="search-button" />
+
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarModel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BodyType)
+        </th>
+
+        <th></th>
+    </tr>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarModel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BodyType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.addCarMsg)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
